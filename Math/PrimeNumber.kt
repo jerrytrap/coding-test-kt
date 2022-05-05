@@ -9,11 +9,13 @@ fun main(){
     check[0] = false
     check[1] = false
 
-    //2부터 확인하려는 수의 제곱근까지 차례로 나누어본다.
-    for(i in 2..num) {
-        for(j in 2..sqrt(i.toDouble()).toInt()) {
-            if (i % j == 0 && i != j) {
-                check[i] = false
+    //2부터 num의 제곱근 확인
+    for(i in 2..sqrt(num.toDouble()).toInt() + 1) {
+        if(check[i]){ //i가 소수인 경우
+            var j = 2
+            while(i * j <= num){
+                check[i * j] = false //i의 배수를 모두 false로 바꿈
+                j++
             }
         }
     }
